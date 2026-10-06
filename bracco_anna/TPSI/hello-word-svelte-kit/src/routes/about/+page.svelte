@@ -8,14 +8,13 @@
 </svelte:head>
 
 <div class="text-column">
-	<h1>About this app</h1>
+	<h1>About me</h1>
 
 	<p>
-		This is a <a href="https://svelte.dev/docs/kit">SvelteKit</a> app. You can make your own by typing
-		the following into your command line and following the prompts:
+		I'm Anna, I study informatics at the Istituto Agnelli in Turin <br> Here's my github
 	</p>
 
-	<pre>npx sv create</pre>
+	<pre>https://github.com/Bracco-Anna/5INFO_2627.git"</pre>
 
 	<p>
 		The page you're looking at is purely static HTML, with no client-side interactivity needed.
