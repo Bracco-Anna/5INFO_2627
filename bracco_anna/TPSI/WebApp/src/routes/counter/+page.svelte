@@ -4,21 +4,26 @@
 
     let valore_singolo = 0
     let valore_doppio = 0
+    let sottolineato = true
+
+    $: doppio = valore_singolo *2 
 </script>
 <h1>Pagina counter</h1>
 
+
+//esempio con if
 {#if valore_singolo < 5}
     <h2 class="rosso">il valore del contatore vale: {valore_singolo}</h2>
+{:else if valore_singolo > 5 && valore_singolo < 10}
+    <h2 class=sottolineato>il valore del contatore vale: {valore_singolo}</h2>
+    <h2> il doppio di questo contatore vale {doppio}</h2>
 {:else}
-    <h2 class="verde">il valore del contatore vale: {valore_singolo}</h2>
-{/if}
+    <h2 class="giallo">il valore del contatore vale: {valore_singolo}</h2>
+    <h2> il doppio di questo contatore vale {doppio}</h2>
+    {/if}
 
-{#if valore_doppio < 5}
-    <h2 class="rosso">il valore del contatore vale: {valore_doppio}</h2>
-{:else}
-    <h2 class="verde">il valore del contatore vale: {valore_doppio}</h2>
-{/if}
-
+//esempio con reattività
+    <h2 class={valore_doppio < 5? 'rosso' : 'verde'}>il valore del contatore vale: {valore_doppio}</h2>
 
 <Counter bind:counter={valore_singolo}/>
 <DoubleCounter bind:counter={valore_doppio}/>
@@ -26,4 +31,6 @@
 <style>
     .rosso {color: #e797ab;}
     .verde {color: #e435d5;}
+    .giallo {color: rgb(194, 17, 179);}
+    .sottolineato {text-decoration: underline;}
 </style>
