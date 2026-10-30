@@ -3,17 +3,34 @@
 <link href="https://fonts.googleapis.com/css?family=Bungee+Spice&display=swap" rel="stylesheet">
 </svelte:head>
 <script>
+    import { createEventDispatcher } from "svelte";
 
-export let counter = 0;
+    import { store_counter } from "./js/store";
 
-    function counter_incr() {
-    
-    counter += 1;
+    const dispatch = createEventDispatcher();
+    export let counter = 0;
+
+    function counter_incr(){
+        counter += 1;
+        $store_counter = counter;
+        emit_event1('incr');
     }
-
-    function counter_decr() {
-    counter -= 1;
+    function counter_decr(){
+        counter -= 1;
+        $store_counter = counter
+        emit_event2('decr');
     }
+    function emit_event1(tipo){
+        dispatch('contatore', {
+            tipo: tipo,
+            valore: counter
+        })
+    }
+    function emit_event2(tipo2){
+        dispatch('contatore', {
+            tipo: tipo2,
+            valore: counter
+        })}
 </script>
 <div class="container">
     <div class="pulsante">

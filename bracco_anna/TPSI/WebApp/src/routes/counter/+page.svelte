@@ -7,11 +7,15 @@
     let sottolineato = true
 
     $: doppio = valore_singolo *2 
+
+    function gestisci_evento(evento){
+        alert(` ${evento.detail.tipo} -- ${evento.detail.valore}` )
+    }
 </script>
 <h1>Pagina counter</h1>
 
 
-//esempio con if
+<!-- esempio con if-->
 {#if valore_singolo < 5}
     <h2 class="rosso">il valore del contatore vale: {valore_singolo}</h2>
 {:else if valore_singolo > 5 && valore_singolo < 10}
@@ -22,11 +26,11 @@
     <h2> il doppio di questo contatore vale {doppio}</h2>
     {/if}
 
-//esempio con reattività
+<!-- esempio con reattivita-->
     <h2 class={valore_doppio < 5? 'rosso' : 'verde'}>il valore del contatore vale: {valore_doppio}</h2>
 
-<Counter bind:counter={valore_singolo}/>
-<DoubleCounter bind:counter={valore_doppio}/>
+<Counter bind:counter={valore_singolo} on:contatore={gestisci_evento}/>
+<DoubleCounter bind:counter={valore_doppio} />
 
 <style>
     .rosso {color: #e797ab;}
